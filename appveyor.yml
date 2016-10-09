@@ -36,10 +36,12 @@ artifacts:
  
 after_build:
   - ps: Get-ChildItem .\*.zip | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
+  - dir dist
+  - echo $(appveyor_repo_tag_name)
 before_deploy:
     - dir dist
 deploy:
-  release: $(appveyor_repo_tag)
+  release: $(appveyor_repo_tag_name)
   tag: $(appveyor_repo_tag) 
   description: 'Safe Beaker Browser'
   provider: 'GitHub' 
@@ -51,4 +53,5 @@ deploy:
   prerelease: true
   on:
     # branch: release                  # release branch only
-    appveyor_repo_tag:  true        # deploy on tag push only
+    tags:  true        # deploy on tag push only
+    # appveyor_repo_tag:  true        # deploy on tag push only
