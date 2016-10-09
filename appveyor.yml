@@ -6,12 +6,12 @@ os: unstable
 environment:
   nodejs_version: "6.3.1"
 
-skip_tags: true
+# skip_tags: true
 
-init:
-  # Set "build version number" to "short-commit-hash" or when tagged to "tag name" (Travis style)
-  - ps: Update-AppveyorBuild -Version "$env:APPVEYOR_REPO_TAG_NAME"
-      
+# init:
+#   # Set "build version number" to "short-commit-hash" or when tagged to "tag name" (Travis style)
+#   - ps: Update-AppveyorBuild -Version "$env:APPVEYOR_REPO_TAG_NAME"
+#       
     
 cache:
   - node_modules
@@ -47,14 +47,14 @@ after_build:
 before_deploy:
     - dir dist
 deploy:
-  # release: $(appveyor_repo_tag_name)
-  # tag: $(appveyor_repo_tag) 
+  release: APPVEYOR_REPO_TAG_NAME
+  tag: APPVEYOR_REPO_TAG_NAME 
   description: 'Safe Beaker Browser'
   provider: GitHub
   auth_token:
     secure: yYDNGH+3V6HD/LemQHWRMtum9o98noPH8a02NFPJyuVKc+6vQWveTClb3+gRSnuB
  # your encrypted token from GitHub
-  artifact: /.*\.zip
+  artifact: dist/*-win.zip
   draft: false
   prerelease: true
   on:
