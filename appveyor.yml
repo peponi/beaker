@@ -46,7 +46,7 @@ deploy:
     secure: yYDNGH+3V6HD/LemQHWRMtum9o98noPH8a02NFPJyuVKc+6vQWveTClb3+gRSnuB
  # your encrypted token from GitHub
   artifact: 'dist\\*.zip'
-  draft: true
+  draft: false
   prerelease: true
   tag: $(appveyor_repo_tag_name) 
   on:
