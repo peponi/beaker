@@ -47,8 +47,8 @@ after_build:
 before_deploy:
     - dir dist
 deploy:
-  release: APPVEYOR_REPO_TAG_NAME
-  tag: APPVEYOR_REPO_TAG_NAME 
+  release: $(appveyor_repo_tag_name)
+  tag: $(appveyor_repo_tag_name)
   description: 'Safe Beaker Browser'
   provider: GitHub
   auth_token:
@@ -59,5 +59,5 @@ deploy:
   prerelease: true
   on:
     branch: release                  # release branch only
-    # appveyor_repo_tag:  true        # deploy on tag push only
+    appveyor_repo_tag:  true        # deploy on tag push only
     # appveyor_repo_tag:  true        # deploy on tag push only
