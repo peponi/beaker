@@ -6,13 +6,6 @@ os: unstable
 environment:
   nodejs_version: "6.3.1"
 
-# skip_tags: true
-
-# init:
-#   # Set "build version number" to "short-commit-hash" or when tagged to "tag name" (Travis style)
-#   - ps: Update-AppveyorBuild -Version "$env:APPVEYOR_REPO_TAG_NAME"
-#       
-    
 cache:
   - node_modules
   - app\node_modules
@@ -54,7 +47,7 @@ deploy:
   auth_token:
     secure: yYDNGH+3V6HD/LemQHWRMtum9o98noPH8a02NFPJyuVKc+6vQWveTClb3+gRSnuB
  # your encrypted token from GitHub
-  artifact: dist/*-win.zip
+  artifact: dist\*-win.zip
   draft: false
   prerelease: true
   on:
